@@ -1,40 +1,135 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
 
-		<title>reveal.js</title>
+    <title>reveal.js</title>
 
-		<link rel="stylesheet" href="dist/reset.css">
-		<link rel="stylesheet" href="dist/reveal.css">
-		<link rel="stylesheet" href="dist/theme/black.css" id="theme">
+    <link rel="stylesheet" href="dist/reset.css" />
+    <link rel="stylesheet" href="dist/reveal.css" />
+    <link rel="stylesheet" href="dist/theme/black.css" id="theme" />
 
-		<!-- Theme used for syntax highlighted code -->
-		<link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme">
-	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
-			</div>
-		</div>
+    <!-- Theme used for syntax highlighted code -->
+    <link
+      rel="stylesheet"
+      href="plugin/highlight/monokai.css"
+      id="highlight-theme"
+    />
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section>
+          <h3>Grocery Store ​Database</h3>
+          <p>
+            <small>Sijie Liu, Wei Wu,</small><br />
+            <small>Joshua Liao, Rui Huang</small>
+          </p>
+        </section>
 
-		<script src="dist/reveal.js"></script>
-		<script src="plugin/notes/notes.js"></script>
-		<script src="plugin/markdown/markdown.js"></script>
-		<script src="plugin/highlight/highlight.js"></script>
-		<script>
-			// More info about initialization & config:
-			// - https://revealjs.com/initialization/
-			// - https://revealjs.com/config/
-			Reveal.initialize({
-				hash: true,
+        <section>
+          <h2>Hello There</h2>
+          <p>This is our project</p>
+        </section>
 
-				// Learn about plugins: https://revealjs.com/plugins/
-				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
-			});
-		</script>
-	</body>
+        <!-- Example of nested vertical slides -->
+        <section>
+          <section>
+            <h2>Objectives</h2>
+          </section>
+          <section>
+            <h2>Objective 1</h2>
+            <p>Create a database for a grocery store​</p>
+          </section>
+          <section>
+            <h2>Objective 2</h2>
+            <p>Store and manage data</p>
+          </section>
+          <section>
+            <h2>Objective 3</h2>
+            <p>Update data</p>
+          </section>
+          <section>
+            <p>That's it, time to go back up.</p>
+          </section>
+        </section>
+
+        <section>
+          <img src="./img/export.png" alt="Database schema" />
+        </section>
+
+        <section data-auto-animate>
+          <h2 data-id="code-title">Code</h2>
+          <pre
+            data-id="code-animation"
+          ><code class="hljs" data-trim data-line-numbers>
+            create table Customers (
+              Customer_ID int not null auto_increment,
+                Customer_First varchar(50),
+                Customer_Last varchar(50),
+                Customer_Phone varchar(12),
+                Customer_Email varchar(50),
+                Birthday date,
+                Customer_State varchar(2),
+                Customer_City varchar(50),
+                Customer_Address varchar(50),
+                Zip_Code int,
+                Points int,
+                primary key (Customer_ID)
+              );
+					</code></pre>
+        </section>
+
+        <section>
+          <section id="fragments">
+            <h2>Feature: Information about orders</h2>
+            <p class="fragment">Find out who placed certain order given an order number.</p>
+          </section>
+
+          <section>
+            <p class="fragment">
+              Find out a certain order's sales revenue  ​
+                <ul>
+                  <li class="fragment">Procedure: Order_Revenue</li>
+                  <li class="fragment">Function: get_order_revenue</li>
+                </ul>
+            </p>
+          </section>
+
+          <section>
+            <p class="fragment">
+              Trigger
+              <ul>
+                <li class="fragment">Create a trigger that update the state abbreviation to upper case.​</li>
+              </ul>
+            </p>
+          </section>
+        </section>
+
+        <section>
+          <h2>Feature: Information about suppliers</h2>
+        </section>
+      </div>
+    </div>
+
+    <script src="dist/reveal.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script>
+      // More info about initialization & config:
+      // - https://revealjs.com/initialization/
+      // - https://revealjs.com/config/
+      Reveal.initialize({
+        hash: true,
+
+        // Learn about plugins: https://revealjs.com/plugins/
+        plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
+      });
+    </script>
+  </body>
 </html>
