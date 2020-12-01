@@ -32,7 +32,8 @@
         </section>
 
         <section>
-          <h2>A Grocery Store Database Design</h2>ß
+          <h2>Our project</h2>
+          <p>A Grocery Store Database Design</p>
         </section>
 
         <!-- Example of nested vertical slides -->
@@ -42,7 +43,7 @@
           </section>
           <section>
             <h2>Objective 1</h2>
-            <p>Create a database for a grocery store​</p>
+            <p>Create a database schema for a grocery store​</p>
           </section>
           <section>
             <h2>Objective 2</h2>
@@ -53,33 +54,107 @@
             <p>Update data</p>
           </section>
           <section>
-            <p>That's it, time to go back up.</p>
+            <p>On to the schema</p>
           </section>
         </section>
 
         <section>
-          <img src="./img/export.png" alt="Database schema" />
+            <h2>The schema</h2>
+            <img src="./img/export.png" alt="Database schema" />
+
         </section>
 
         <section data-auto-animate>
-          <h2 data-id="code-title">Code</h2>
+          <h2 data-id="code-title">The Code - Customers Table</h2>
           <pre
             data-id="code-animation"
           ><code class="hljs" data-trim data-line-numbers>
+            drop table if exists Customers;
             create table Customers (
               Customer_ID int not null auto_increment,
-                Customer_First varchar(50),
-                Customer_Last varchar(50),
-                Customer_Phone varchar(12),
-                Customer_Email varchar(50),
-                Birthday date,
-                Customer_State varchar(2),
-                Customer_City varchar(50),
-                Customer_Address varchar(50),
-                Zip_Code int,
-                Points int,
-                primary key (Customer_ID)
-              );
+              Customer_First varchar(50),
+              Customer_Last varchar(50),
+              Customer_Phone varchar(12),
+              Customer_Email varchar(50),
+              Birthday date,
+              Customer_State varchar(2),
+              Customer_City varchar(50),
+              Customer_Address varchar(50),
+              Zip_Code int,
+              Points int,
+              primary key (Customer_ID)
+            );
+					</code></pre>
+        </section>
+        <section data-auto-animate>
+          <h2 data-id="code-title">The Code - Orders Table</h2>
+          <pre
+            data-id="code-animation"
+          ><code class="hljs" data-trim data-line-numbers>
+            drop table if exists Orders;
+            create table Orders(
+            Order_Number int not null auto_increment,
+              primary key(Order_Number),
+              Customer_ID int not null,
+              foreign key(Customer_ID)references Customers(Customer_ID),
+              Order_Date date,
+              Shipping_Date date
+            );
+					</code></pre>
+        </section>
+
+        <section data-auto-animate>
+          <h2 data-id="code-title">The Code - Suppliers Table</h2>
+          <pre
+            data-id="code-animation"
+          ><code class="hljs" data-trim data-line-numbers>
+            drop table if exists Suppliers;
+            create table Suppliers(
+              Supplier_ID int not null auto_increment,
+              primary key(Supplier_ID),
+              Company_Name varchar(200),
+              Supplier_First varchar(50),
+              Supplier_Last varchar(50),
+              Supplier_Phone varchar(12),
+              Supplier_State varchar(2),
+              Supplier_City varchar(50),
+              Supplier_Address varchar(200),
+              Supplier_Zip varchar(5)
+            );
+					</code></pre>
+        </section>
+        <section data-auto-animate>
+          <h2 data-id="code-title">The Code - Product Table</h2>
+          <pre
+            data-id="code-animation"
+          ><code class="hljs" data-trim data-line-numbers>
+            drop table if exists Product;
+            create table Product(
+              Product_ID int not null auto_increment,
+              primary key(Product_ID),
+              Product_Name varchar(50),
+              Stock_Quantity int,
+              Supplier_ID int not null,
+              foreign key(Supplier_ID) references Suppliers(Supplier_ID),
+              Unit_Price decimal(10,2),
+              Selling_Price decimal(10,2)
+            );
+					</code></pre>
+        </section>
+
+        <section data-auto-animate>
+          <h2 data-id="code-title">The Code - Order Details Table</h2>
+          <pre
+            data-id="code-animation"
+          ><code class="hljs" data-trim data-line-numbers>
+            drop table if exists Order_Details;
+            create table Order_Details(
+              Order_Number int not null,
+              foreign key(Order_Number) references Orders(Order_Number),
+              Product_ID int not null,
+              foreign key(Product_ID) references Product(Product_ID),
+              Order_Quantity int not null
+            );
 					</code></pre>
         </section>
 
